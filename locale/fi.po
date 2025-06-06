@@ -15,6 +15,18 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: attranslate\n"
+msgid "Wait..."
+msgstr "Odota..."
+msgid "Checking internet connection..."
+msgstr "Tarkistetaan internet-yhteyttä..."
+msgid "Internet"
+msgstr "Internet"
+msgid ""
+"Without internet connection...\\n"
+"Extra packages installation disabled."
+msgstr ""
+"Ilman internet-yhteyttä...\\n"
+"Lisäpakettien asennus on poistettu käytöstä."
 msgid "Please wait..."
 msgstr "Odota hetki..."
 msgid "Checking the integrity of the download and storage device..."
@@ -91,14 +103,46 @@ msgstr ""
 "\n"
 "Asennuksen onnistumiseksi sinun on todennäköisesti muutettava BIOSin asetukset käynnistämään EFI- "
 "tai UEFI-tilassa."
+msgid "Install System"
+msgstr "Asenna järjestelmä"
 msgid "Sending, please wait..."
 msgstr "Lähetetään, odota..."
+msgid "Log Sent"
+msgstr "Loki lähetetty"
+msgid ""
+"Log successfully sent!\\n"
+"\\n"
+"URL: $fileUrl\\n"
+"\\n"
+"You can use this URL to share the log."
+msgstr ""
+"Lokki lähetetty onnistuneesti!\\n"
+"\\n"
+"URL: $fileUrl\\n"
+"\\n"
+"Voit käyttää tätä URL-osoitetta jakamiseen lokista."
+msgid "Open the EFI manager"
+msgstr "Avaa EFI-hallinta"
+msgid "calamares LOG"
+msgstr "calamares LOKI"
+msgid ""
+"\\n"
+"It was not possible to write the EFI entry to the motherboard, likely due to insufficient space.\\n"
+"\\n"
+"Check the EFI manager for any entries that can be deleted and try installing the system again.\\n"
+msgstr ""
+"\\n"
+"EFI-kirjauksen kirjoittaminen emolevylle ei ollut mahdollista, todennäköisesti riittämättömän tilan "
+"vuoksi.\\n"
+"\\n"
+"Tarkista EFI-hallinta mahdollisten poistettavien kirjauksien osalta ja yritä asentaa järjestelmä "
+"uudelleen.\\n"
+msgid "Don't open QEFIEntryManager..."
+msgstr "Älä avaa QEFIEntryManageria..."
 msgid "Open"
 msgstr "Avaa"
 msgid "Send to the cloud"
 msgstr "Lähetä pilveen"
-msgid "calamares LOG"
-msgstr "calamares LOKI"
 msgid ""
 "\\n"
 "Do you want to view or send the installation log file to the cloud?\\n"
@@ -106,8 +150,6 @@ msgid ""
 msgstr ""
 "Haluatko tarkastella tai lähettää asennuslokitiedoston pilveen?\\n"
 "Luo linkki lähetettäväksi tukiryhmiin.\\n"
-msgid "Closing file..."
-msgstr "Suljetaan tiedostoa..."
 msgid "Checking the file:"
 msgstr "Tarkistetaan tiedostoa:"
 msgid "Checking for download or USB drive errors, this may take a few minutes..."
@@ -120,18 +162,6 @@ msgid "The files are intact."
 msgstr "Tiedostot ovat ehjät."
 msgid "Verification canceled."
 msgstr "Vahvistus peruutettu."
-msgid "Wait..."
-msgstr "Odota..."
-msgid "Checking internet connection..."
-msgstr "Tarkistetaan internet-yhteyttä..."
-msgid "Internet"
-msgstr "Internet"
-msgid ""
-"Without internet connection...\\n"
-"Extra packages installation disabled."
-msgstr ""
-"Ilman internet-yhteyttä...\\n"
-"Lisäpakettien asennus on poistettu käytöstä."
 # 
 # #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
 # 
@@ -387,6 +417,16 @@ msgstr "ja graafisessa tilassa"
 # 
 # #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
 # 
+msgid "Manage EFI entries on the motherboard (NVRAM):"
+msgstr "Hallitse EFI-kirjauksia emolevyllä (NVRAM):"
+# 
+# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
+# 
+msgid "EFI Entry Manager"
+msgstr "EFI-käynnistysmanageri"
+# 
+# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
+# 
 # #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
 # 
 # #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
@@ -426,325 +466,6 @@ msgstr "Tämä on yhteistyöjärjestelmä, jos tarvitset apua, katso foorumiamme
 # 
 msgid "Back"
 msgstr "Takaisin"
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "Maintenance"
-msgstr "Ylläpito"
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "Tools that facilitate the maintenance of the installed system."
-msgstr "Työkalut, jotka helpottavat asennetun järjestelmän ylläpitoa."
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "Restore"
-msgstr "Palauta"
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "Installation"
-msgstr "Asennus"
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "The system is in live mode, which has limitations."
-msgstr "Järjestelmä on käyttötilassa, jossa on rajoituksia."
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "Install it for a complete experience."
-msgstr "Asenna se täydellisen kokemuksen saamiseksi."
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "Install"
-msgstr "Asenna"
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "Minimal"
-msgstr "Pienin"
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "Choose which programs to install, ensuring a highly customized experience."
-msgstr "Valitse asennettavat ohjelmat ja varmista erittäin mukautettu käyttökokemus."
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "Restore system settings"
-msgstr "Palauta järjestelmän asetukset"
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid ""
-"Utility that facilitates the restoration of the installed system, especially the restoration of the "
-"system boot (Grub)."
-msgstr ""
-"Apuohjelma, joka helpottaa asennetun järjestelmän palauttamista, erityisesti järjestelmän "
-"käynnistyksen (Grub) palauttamista."
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "It can also be used to access the package manager and terminal of the installed system."
-msgstr "Sitä voidaan käyttää myös asennetun järjestelmän paketinhallintaan ja terminaaliin."
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "Start"
-msgstr "Aloita"
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "Snapshot and backups"
-msgstr "Tilannevedos ja varmuuskopiot"
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "Restore restore points of the installed system."
-msgstr "Palauta asennetun järjestelmän palautuspisteet."
 # 
 # #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
 # 
@@ -808,47 +529,3 @@ msgstr "Poista valinta kaikista"
 # 
 msgid "Check All"
 msgstr "Valitse kaikki"
-msgid "Install System"
-msgstr "Asenna järjestelmä"
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "Manage EFI entries on the motherboard (NVRAM):"
-msgstr "Hallitse EFI-kirjauksia emolevyllä (NVRAM):"
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "EFI Entry Manager"
-msgstr "EFI-käynnistysmanageri"
-msgid "Open the EFI manager"
-msgstr "Avaa EFI-hallinta"
-msgid ""
-"\\n"
-"It was not possible to write the EFI entry to the motherboard, likely due to insufficient space.\\n"
-"\\n"
-"Check the EFI manager for any entries that can be deleted and try installing the system again.\\n"
-msgstr ""
-"\\n"
-"EFI-kirjauksen kirjoittaminen emolevylle ei ollut mahdollista, todennäköisesti riittämättömän tilan "
-"vuoksi.\\n"
-"\\n"
-"Tarkista EFI-hallinta mahdollisten poistettavien kirjauksien osalta ja yritä asentaa järjestelmä "
-"uudelleen.\\n"
-msgid "Don't open QEFIEntryManager..."
-msgstr "Älä avaa QEFIEntryManageria..."
-msgid "Log Sent"
-msgstr "Loki lähetetty"
-msgid ""
-"Log successfully sent!\\n"
-"\\n"
-"URL: $fileUrl\\n"
-"\\n"
-"You can use this URL to share the log."
-msgstr ""
-"Lokki lähetetty onnistuneesti!\\n"
-"\\n"
-"URL: $fileUrl\\n"
-"\\n"
-"Voit käyttää tätä URL-osoitetta jakamiseen lokista."
-msgid "Restore points of the installed system."
-msgstr "Asennettujen järjestelmän palautuspisteet."

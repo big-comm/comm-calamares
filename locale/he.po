@@ -15,6 +15,18 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: attranslate\n"
+msgid "Wait..."
+msgstr "המתן..."
+msgid "Checking internet connection..."
+msgstr "בודק חיבור אינטרנט..."
+msgid "Internet"
+msgstr "אינטרנט"
+msgid ""
+"Without internet connection...\\n"
+"Extra packages installation disabled."
+msgstr ""
+"בלי חיבור לאינטרנט...\n"
+"התקנת חבילות נוספות מושבתת."
 msgid "Please wait..."
 msgstr "המתן בבקשה..."
 msgid "Checking the integrity of the download and storage device..."
@@ -88,14 +100,43 @@ msgstr ""
 "\n"
 "כדי שההתקנה תצליח, כנראה תצטרך \n"
 "לשנות את ההגדרות ב-BIOS כך שההפעלה תתבצע במצב EFI או UEFI."
+msgid "Install System"
+msgstr "התקן מערכת"
 msgid "Sending, please wait..."
 msgstr "שולח, אנא המתן..."
+msgid "Log Sent"
+msgstr "יומן נשלח"
+msgid ""
+"Log successfully sent!\\n"
+"\\n"
+"URL: $fileUrl\\n"
+"\\n"
+"You can use this URL to share the log."
+msgstr ""
+"היומן נשלח בהצלחה!\\n"
+"\\n"
+"כתובת URL: $fileUrl\\n"
+"\\n"
+"אתה יכול להשתמש בכתובת URL זו כדי לשתף את היומן."
+msgid "Open the EFI manager"
+msgstr "פתח את מנהל EFI"
+msgid "calamares LOG"
+msgstr "יומן Calamares"
+msgid ""
+"\\n"
+"It was not possible to write the EFI entry to the motherboard, likely due to insufficient space.\\n"
+"\\n"
+"Check the EFI manager for any entries that can be deleted and try installing the system again.\\n"
+msgstr ""
+"לא היה אפשר לכתוב את כניסת ה-EFI ללוח האם, כנראה בגלל חוסר מקום מספיק. \n"
+"\n"
+"בדוק את מנהל ה-EFI עבור כל כניסות שניתן למחוק ונסה להתקין את המערכת שוב."
+msgid "Don't open QEFIEntryManager..."
+msgstr "אל תפתח את QEFIEntryManager..."
 msgid "Open"
 msgstr "פתח"
 msgid "Send to the cloud"
 msgstr "שלח לענן"
-msgid "calamares LOG"
-msgstr "יומן Calamares"
 msgid ""
 "\\n"
 "Do you want to view or send the installation log file to the cloud?\\n"
@@ -103,8 +144,6 @@ msgid ""
 msgstr ""
 "האם ברצונך להציג או לשלוח את קובץ היומן של ההתקנה לענן?\\n"
 "צור קישור לשליחה בקבוצות תמיכה."
-msgid "Closing file..."
-msgstr "סגירת קובץ..."
 msgid "Checking the file:"
 msgstr "בודק את הקובץ:"
 msgid "Checking for download or USB drive errors, this may take a few minutes..."
@@ -117,18 +156,6 @@ msgid "The files are intact."
 msgstr "הקבצים שלמים."
 msgid "Verification canceled."
 msgstr "האימות בוטל."
-msgid "Wait..."
-msgstr "המתן..."
-msgid "Checking internet connection..."
-msgstr "בודק חיבור אינטרנט..."
-msgid "Internet"
-msgstr "אינטרנט"
-msgid ""
-"Without internet connection...\\n"
-"Extra packages installation disabled."
-msgstr ""
-"בלי חיבור לאינטרנט...\n"
-"התקנת חבילות נוספות מושבתת."
 # 
 # #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
 # 
@@ -384,6 +411,16 @@ msgstr "ומצב גרפי"
 # 
 # #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
 # 
+msgid "Manage EFI entries on the motherboard (NVRAM):"
+msgstr "נהל רשומות EFI בלוח האם (NVRAM):"
+# 
+# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
+# 
+msgid "EFI Entry Manager"
+msgstr "מנהל כניסת EFI"
+# 
+# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
+# 
 # #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
 # 
 # #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
@@ -423,323 +460,6 @@ msgstr "זהו מערכת שיתופי, אם נדרשת עזרה יש להתיי
 # 
 msgid "Back"
 msgstr "אחורה"
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "Maintenance"
-msgstr "תחזוקה"
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "Tools that facilitate the maintenance of the installed system."
-msgstr "כלים שמקלים על תחזוקת המערכת שמותקנת."
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "Restore"
-msgstr "שחזור"
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "Installation"
-msgstr "התקנה"
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "The system is in live mode, which has limitations."
-msgstr "המערכת פועלת במצב חי, שיש לו הגבלות."
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "Install it for a complete experience."
-msgstr "התקן אותו עבור חוויית משתמש מלאה."
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "Install"
-msgstr "התקן"
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "Minimal"
-msgstr "מינימלי"
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "Choose which programs to install, ensuring a highly customized experience."
-msgstr "בחר אילו תוכניות להתקין, וודא שהחוויה תהיה מותאמת אישית."
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "Restore system settings"
-msgstr "שחזור הגדרות המערכת"
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid ""
-"Utility that facilitates the restoration of the installed system, especially the restoration of the "
-"system boot (Grub)."
-msgstr "תוכנת עזר שמקלה על שחזור המערכת המותקנת, במיוחד שחזור האתחול של המערכת (Grub)."
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "It can also be used to access the package manager and terminal of the installed system."
-msgstr "ניתן גם להשתמש בו כדי לגשת למנהל החבילות ולטרמינל של המערכת שהותקנה."
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "Start"
-msgstr "התחלה"
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "Snapshot and backups"
-msgstr "צילום מסך וגיבויים"
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "Restore restore points of the installed system."
-msgstr "שחזור נקודות שחזור של המערכת שמותקנת."
 # 
 # #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
 # 
@@ -803,44 +523,3 @@ msgstr "בטל את כל הסימונים"
 # 
 msgid "Check All"
 msgstr "בדוק הכל"
-msgid "Install System"
-msgstr "התקן מערכת"
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "Manage EFI entries on the motherboard (NVRAM):"
-msgstr "נהל רשומות EFI בלוח האם (NVRAM):"
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "EFI Entry Manager"
-msgstr "מנהל כניסת EFI"
-msgid "Open the EFI manager"
-msgstr "פתח את מנהל EFI"
-msgid ""
-"\\n"
-"It was not possible to write the EFI entry to the motherboard, likely due to insufficient space.\\n"
-"\\n"
-"Check the EFI manager for any entries that can be deleted and try installing the system again.\\n"
-msgstr ""
-"לא היה אפשר לכתוב את כניסת ה-EFI ללוח האם, כנראה בגלל חוסר מקום מספיק. \n"
-"\n"
-"בדוק את מנהל ה-EFI עבור כל כניסות שניתן למחוק ונסה להתקין את המערכת שוב."
-msgid "Don't open QEFIEntryManager..."
-msgstr "אל תפתח את QEFIEntryManager..."
-msgid "Log Sent"
-msgstr "יומן נשלח"
-msgid ""
-"Log successfully sent!\\n"
-"\\n"
-"URL: $fileUrl\\n"
-"\\n"
-"You can use this URL to share the log."
-msgstr ""
-"היומן נשלח בהצלחה!\\n"
-"\\n"
-"כתובת URL: $fileUrl\\n"
-"\\n"
-"אתה יכול להשתמש בכתובת URL זו כדי לשתף את היומן."
-msgid "Restore points of the installed system."
-msgstr "נקודות שחזור של המערכת המותקנת."

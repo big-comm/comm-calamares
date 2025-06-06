@@ -15,6 +15,18 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: attranslate\n"
+msgid "Wait..."
+msgstr "Menunggu..."
+msgid "Checking internet connection..."
+msgstr "Memeriksa koneksi internet..."
+msgid "Internet"
+msgstr "Internet"
+msgid ""
+"Without internet connection...\\n"
+"Extra packages installation disabled."
+msgstr ""
+"Tanpa sambungan internet...\\n"
+"Pemasangan paket tambahan dinonaktifkan."
 msgid "Please wait..."
 msgstr "Harap tunggu..."
 msgid "Checking the integrity of the download and storage device..."
@@ -92,14 +104,44 @@ msgstr ""
 "\n"
 "Untuk pemasangan berjaya, anda mungkin perlu menukar konfigurasi dalam BIOS untuk memulakan dalam "
 "mod EFI atau UEFI."
+msgid "Install System"
+msgstr "Pasang Sistem"
 msgid "Sending, please wait..."
 msgstr "Menghantar, sila tunggu..."
+msgid "Log Sent"
+msgstr "Skýrsla send."
+msgid ""
+"Log successfully sent!\\n"
+"\\n"
+"URL: $fileUrl\\n"
+"\\n"
+"You can use this URL to share the log."
+msgstr ""
+"Skýrsla sendist með góðum árangri!\\n"
+"\\n"
+"Vefslóð: $fileUrl\\n"
+"\\n"
+"Þú getur notað þessa vefslóð til að deila skýrslunni."
+msgid "Open the EFI manager"
+msgstr "Opnaðu EFI stjórnandann"
+msgid "calamares LOG"
+msgstr "catatan calamares"
+msgid ""
+"\\n"
+"It was not possible to write the EFI entry to the motherboard, likely due to insufficient space.\\n"
+"\\n"
+"Check the EFI manager for any entries that can be deleted and try installing the system again.\\n"
+msgstr ""
+"\\n"
+"Ek var ekki hægt að skrifa EFI skráninguna á móðurborðið, líklega vegna ófullnægjandi pláss.\\n"
+"\\n"
+"Athugaðu EFI stjórnandann fyrir skráningar sem hægt er að eyða og reyndu að setja kerfið upp aftur.\\n"
+msgid "Don't open QEFIEntryManager..."
+msgstr "Ekki opna QEFIEntryManager..."
 msgid "Open"
 msgstr "Buka"
 msgid "Send to the cloud"
 msgstr "Kirim ke cloud"
-msgid "calamares LOG"
-msgstr "catatan calamares"
 msgid ""
 "\\n"
 "Do you want to view or send the installation log file to the cloud?\\n"
@@ -108,8 +150,6 @@ msgstr ""
 "\\n"
 "Apakah Anda ingin melihat atau mengirim file log instalasi ke cloud?\\n"
 "Buat tautan untuk dikirim ke grup dukungan.\\n"
-msgid "Closing file..."
-msgstr "Menutup berkas..."
 msgid "Checking the file:"
 msgstr "Memeriksa berkas:"
 msgid "Checking for download or USB drive errors, this may take a few minutes..."
@@ -122,18 +162,6 @@ msgid "The files are intact."
 msgstr "Fail ini utuh."
 msgid "Verification canceled."
 msgstr "Pengesahan dibatalkan."
-msgid "Wait..."
-msgstr "Menunggu..."
-msgid "Checking internet connection..."
-msgstr "Memeriksa koneksi internet..."
-msgid "Internet"
-msgstr "Internet"
-msgid ""
-"Without internet connection...\\n"
-"Extra packages installation disabled."
-msgstr ""
-"Tanpa sambungan internet...\\n"
-"Pemasangan paket tambahan dinonaktifkan."
 # 
 # #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
 # 
@@ -389,6 +417,16 @@ msgstr "dan mod grafis"
 # 
 # #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
 # 
+msgid "Manage EFI entries on the motherboard (NVRAM):"
+msgstr "Stjórna EFI færslum á móðurborðinu (NVRAM):"
+# 
+# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
+# 
+msgid "EFI Entry Manager"
+msgstr "EFI Inngangsstjóri"
+# 
+# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
+# 
 # #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
 # 
 # #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
@@ -430,323 +468,6 @@ msgstr ""
 # 
 msgid "Back"
 msgstr "Kembali"
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "Maintenance"
-msgstr "Pemeliharaan"
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "Tools that facilitate the maintenance of the installed system."
-msgstr "Alat yang memudahkan pemeliharaan sistem yang terpasang."
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "Restore"
-msgstr "Pulihkan"
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "Installation"
-msgstr "Pemasangan"
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "The system is in live mode, which has limitations."
-msgstr "Sistem berada dalam mode langsung, yang memiliki batasan."
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "Install it for a complete experience."
-msgstr "Pasang untuk pengalaman lengkap."
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "Install"
-msgstr "Pasang"
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "Minimal"
-msgstr "Minimal"
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "Choose which programs to install, ensuring a highly customized experience."
-msgstr "Pilih program mana yang ingin diinstal, memastikan pengalaman yang sangat disesuaikan."
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "Restore system settings"
-msgstr "Pulihkan pengaturan sistem"
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid ""
-"Utility that facilitates the restoration of the installed system, especially the restoration of the "
-"system boot (Grub)."
-msgstr "Utilitas yang memudahkan pemulihan sistem yang diinstal, terutama pemulihan boot sistem (Grub)."
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "It can also be used to access the package manager and terminal of the installed system."
-msgstr "Ia juga dapat digunakan untuk mengakses pengelola paket dan terminal sistem yang terpasang."
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "Start"
-msgstr "Mulai"
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "Snapshot and backups"
-msgstr "Snapshot dan sandaran"
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "Restore restore points of the installed system."
-msgstr "Pulihkan titik pemulihan sistem yang terpasang."
 # 
 # #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
 # 
@@ -810,45 +531,3 @@ msgstr "Tidak Centang Semua"
 # 
 msgid "Check All"
 msgstr "Periksa Semua"
-msgid "Install System"
-msgstr "Pasang Sistem"
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "Manage EFI entries on the motherboard (NVRAM):"
-msgstr "Stjórna EFI færslum á móðurborðinu (NVRAM):"
-# 
-# #-#-#-#-#  calamares-biglinux-bash.pot (calamares-biglinux)  #-#-#-#-#
-# 
-msgid "EFI Entry Manager"
-msgstr "EFI Inngangsstjóri"
-msgid "Open the EFI manager"
-msgstr "Opnaðu EFI stjórnandann"
-msgid ""
-"\\n"
-"It was not possible to write the EFI entry to the motherboard, likely due to insufficient space.\\n"
-"\\n"
-"Check the EFI manager for any entries that can be deleted and try installing the system again.\\n"
-msgstr ""
-"\\n"
-"Ek var ekki hægt að skrifa EFI skráninguna á móðurborðið, líklega vegna ófullnægjandi pláss.\\n"
-"\\n"
-"Athugaðu EFI stjórnandann fyrir skráningar sem hægt er að eyða og reyndu að setja kerfið upp aftur.\\n"
-msgid "Don't open QEFIEntryManager..."
-msgstr "Ekki opna QEFIEntryManager..."
-msgid "Log Sent"
-msgstr "Skýrsla send."
-msgid ""
-"Log successfully sent!\\n"
-"\\n"
-"URL: $fileUrl\\n"
-"\\n"
-"You can use this URL to share the log."
-msgstr ""
-"Skýrsla sendist með góðum árangri!\\n"
-"\\n"
-"Vefslóð: $fileUrl\\n"
-"\\n"
-"Þú getur notað þessa vefslóð til að deila skýrslunni."
-msgid "Restore points of the installed system."
-msgstr "Endurupunktar fyrir uppsetta kerfið."
