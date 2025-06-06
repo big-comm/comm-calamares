@@ -1,0 +1,42 @@
+# comm-calamares/usr/share/calamares/modules/desktop-groups.yaml
+#
+# Define grupos de pacotes para seleção no instalador.
+# Cada entrada é um grupo que o usuário pode escolher.
+
+- name: "Hyprland"
+  description: "Um compositor Wayland dinâmico com foco em visuais e personalização."
+  packages:
+    # Pacotes essenciais para o Hyprland
+    - hyprland
+    - kitty             # Terminal
+    - waybar            # Barra de status
+    - wofi              # Lançador de aplicativos
+    - xdg-desktop-portal-hyprland
+    - polkit-kde-agent  # Autenticação
+    - pipewire          # Áudio
+    - wireplumber
+    - ttf-nerd-fonts-symbols-common # Fontes com ícones
+  selected: true # Define se este grupo vem pré-selecionado
+
+- name: "i3 Window Manager"
+  description: "Um gerenciador de janelas tiling leve e configurável para X11."
+  packages:
+    # Pacotes essenciais para o i3
+    - i3-gaps           # O gerenciador de janelas
+    - i3status          # Barra de status padrão
+    - i3blocks          # Alternativa para a barra
+    - dmenu             # Lançador de aplicativos
+    - terminator        # Terminal
+    - feh               # Visualizador de imagens e gerenciador de papel de parede
+    - picom             # Compositor para transparência e efeitos
+  selected: false
+
+- name: "Ferramentas de Desenvolvimento"
+  description: "Pacotes essenciais para programação e desenvolvimento."
+  packages:
+    - base-devel
+    - git
+    - vscode            # Ou 'code' se estiver usando o do repositório oficial
+    - docker
+    - docker-compose
+  selected: false
