@@ -64,12 +64,25 @@
     function packageSelector(url) {
         return {
             packageGroups: [],
-            init() {
-                // Em vez de um JSON, vamos chamar um script que converte o YAML para JSON
-                _runCmd(`yaml2json /usr/share/calamares/modules/desktop-groups.yaml`, (data) => {
-                    this.packageGroups = JSON.parse(data);
-                });
-            },
+// Dentro da função packageSelector em desktops.html
+						init() {
+						    // Comando Python para ler o YAML e imprimir como JSON
+						    const pythonCommand = `python -c "import yaml, json, sys; print(json.dumps(yaml.safe_load(sys.stdin)))" < /usr/share/calamares/modules/desktop-groups.yaml`;
+						
+						    _runCmd(pythonCommand, (data) => {
+						        console.log("Dados brutos recebidos do backend:", data);
+						
+						        try {
+						            const parsedData = JSON.parse(data);
+						            this.packageGroups = parsedData;
+						            console.log("Dados JSON processados com sucesso:", this.packageGroups);
+						        } catch (e) {
+						            console.error("ERRO ao processar o JSON:", e);
+						            console.error("Os dados que causaram o erro foram:", data);
+						            alert("Erro ao carregar a lista de pacotes. Verifique o console para detalhes.");
+						        }
+						    });
+						},
             submitSelection() {
                 const selectedPackages = this.packageGroups
                     .filter(group => group.selected)
