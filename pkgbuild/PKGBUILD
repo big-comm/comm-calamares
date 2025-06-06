@@ -1,9 +1,10 @@
+# Maintainer: Leonardo Berbert <leo4berbert@gmail.com>
 # Maintainer: Tales A. Mendonça <talesam@gmail.com>
 
-pkgname=pkgbuild-template
-pkgdesc="Package template for Communitybig"
+pkgname=comm-calamares
+pkgdesc="Calamares tweaks to BigLinux/BigCommunity, like using btrfs+zstd for default"
 # Uncomment and edit the following lines as needed
-#depends=('')
+depends=('bbv-framework' 'qefientrymanager')
 #makedepends=('')
 #optdepends=('')
 #conflicts=('')
@@ -12,7 +13,7 @@ pkgdesc="Package template for Communitybig"
 pkgver=$(date +%y.%m.%d)
 pkgrel=$(date +%H%M)
 arch=('any')
-license=('MIT')
+license=('BSD-2-Clause AND CC0-1.0 AND CC-BY-4.0 AND GPL-3.0-or-later AND LGPL-2.0-only AND LGPL-2.1-only AND LGPL-3.0-or-later AND MIT')
 url="https://github.com/big-comm/${pkgname}"
 source=("git+${url}.git")
 md5sums=('SKIP')
@@ -53,7 +54,7 @@ package() {
     fi
 
     # Install files
-    local dirs=("usr" "etc" "opt")
+    local dirs=("usr" "etc" "opt" "locale")
     for dir in "${dirs[@]}"; do
         if [ -d "${srcdir}/${dir}" ]; then
             cp -a "${srcdir}/${dir}" "${pkgdir}/"
