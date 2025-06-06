@@ -26,18 +26,21 @@ printMsg() {
 # }
 
 # Function executed after package installation
-# post_install() {
-#     printMsg "Configuring the package after installation..."
-#     # Example: Create a configuration directory
-#     # mkdir -p /etc/mypackage
-#     # chmod 755 /etc/mypackage
-#     # printMsg "Created configuration directory"
-#
-#     # Example: Start a service
-#     # systemctl enable myservice.service
-#     # systemctl start myservice.service
-#     # printMsg "Service enabled and started"
-# }
+post_install() {
+    if [ "$(file -i /usr/bin/calamares | grep shellscript)" = "" ]; then
+        #mv -f /usr/bin/calamares /usr/bin/calamares-manjaro
+        #cp /usr/bin/calamares-biglinux /usr/bin/calamares
+        bash /usr/share/biglinux-divert/calamares-biglinux
+    fi
+    rm -f /usr/share/applications/calamares.desktop
+    
+    echo $(( $(date +%s) / 86400 )) > /usr/share/bigbashview/bcc/apps/bigbashview-calamares/install_date
+}
+
+pre_remove() {
+    mv -f /usr/bin/calamares /usr/bin/calamares-biglinux
+    mv -f /usr/bin/calamares-manjaro /usr/bin/calamares
+} 
 
 # Function executed before package upgrade
 # pre_upgrade() {
