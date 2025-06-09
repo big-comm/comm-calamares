@@ -94,12 +94,12 @@
     - qt5-svg
     - qt5-graphicaleffects
     - qt5-quickcontrols2
-    - biglinux-meta-audio-config
     - portaudio
     - lib32-portaudio
     - pipewire-alsa
     - pipewire-pulse
-    - manjaro-pipewire
+    - pipewire-jack
+    - lib32-pipewire-jack
     - libsndfile
     - lib32-libsndfile
     - xf86-input-elographics
