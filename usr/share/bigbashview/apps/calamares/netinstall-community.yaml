@@ -1,5 +1,94 @@
+- name: "Seleção do Ambiente de Instalação"
+  description: "Escolha o ambiente a ser instalado. Apenas uma opção pode ser selecionada."
+  mutually_exclusive: true
+  groups:
+      - name: "Hyprland (Recomendado)"
+        description: "Um compositor Wayland moderno e dinâmico com animações fluidas e alta personalização."
+        selected: true # Esta será a opção padrão
+        packages:
+            - hyprland
+            - waybar
+            - wofi
+            - kitty
+            - thunar
+            - swaybg
+            - mako
+            - xdg-desktop-portal-hyprland
+            - polkit-kde-agent
+            - grim
+            - slurp
+            - noto-fonts-emoji
+
+      - name: "i3 WM (Tradicional)"
+        description: "Um gerenciador de janelas Tiling clássico, leve e eficiente para X11."
+        selected: false
+        packages:
+            - i3-wm
+            - i3status
+            - i3lock
+            - rofi
+            - nitrogen
+            - picom
+            - thunar
+            - lxappearance
+
+      - name: "Instalação Mínima (Apenas terminal)"
+        description: "Instala um sistema base sem ambiente gráfico. Ideal para servidores ou usuários avançados."
+        selected: false
+        packages:
+          # BASE
+          - base
+          - linux-lts # O nome real do pacote do kernel, substitua se necessário (ex: linux, linux-zen)
+          # SISTEMAS DE ARQUIVOS
+          - btrfs-progs
+          - dosfstools
+          - e2fsprogs
+          - exfatprogs
+          - f2fs-tools
+          - jfsutils
+          - mdadm
+          - xfsprogs
+          # BOOTLOADER E INICIALIZAÇÃO
+          - amd-ucode
+          - grub
+          - grub-theme-community
+          - install-grub
+          - intel-ucode
+          - os-prober
+          - update-grub
+          # FERRAMENTAS DO SISTEMA
+          - bash-completion
+          - dhcpcd
+          - sudo
+          # SSH SERVER
+          - openssh
+          # APPS BIGLINUX
+          - biglinux-nano-config
+          - biglinux-systemd-swap
+          # KEYRING
+          - biglinux-keyring
+          - chili-keyring
+          - community-keyring
+          # APLICATIVOS DA COMUNIDADE
+          - bigcommunity-name
+          - comm-minimal-config
+          # UTILITÁRIOS ESSENCIAIS
+          - curl
+          - dialog
+          - duf
+          - faster-mkinitcpio
+          - grc-rs
+          - htop
+          - mkinitcpio
+          - rsync
+          - shfmt
+          - wget
+
+# As seções a seguir são para pacotes de software adicionais.
+# O usuário pode selecionar qualquer combinação usando caixas de seleção.
+# Estes pacotes serão adicionados À SELEÇÃO DE AMBIENTE feita acima.
 - name: "Imagem"
-  #description: "Editores de Imagem"
+  description: "Editores de imagem, visualizadores e ferramentas de design gráfico."
   critical: false
   hidden: false
   selected: false
@@ -18,8 +107,8 @@
     - scribus
     - synfigstudio
 
-- name: "Video"
-  #description: "Instalação do Plasma"
+- name: "Vídeo"
+  description: "Editores de vídeo, conversores e reprodutores multimídia."
   critical: false
   hidden: false
   selected: false
@@ -36,8 +125,8 @@
     - obs-studio
     - gyroflow-bin
 
-- name: "Audio"
-  #description: "Instalação do Meta Desktop UaiSO"
+- name: "Áudio"
+  description: "Estações de trabalho de áudio digital (DAW), editores e utilitários de som."
   critical: false
   hidden: false
   selected: false
@@ -65,7 +154,7 @@
     - reaper
 
 - name: "3D & CAD"
-  #description: "Complementos para Estação de Trabalho"
+  description: "Software para modelagem 3D, animação e design assistido por computador."
   critical: false
   hidden: false
   selected: false
@@ -78,8 +167,8 @@
     - openscad
     - sweethome3d
 
-- name: "Browser"
-  #description: "Complementos para Estação de Trabalho"
+- name: "Navegadores Web"
+  description: "Escolha navegadores de internet adicionais para instalar."
   critical: false
   hidden: false
   selected: false
