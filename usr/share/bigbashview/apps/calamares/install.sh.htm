@@ -1,62 +1,59 @@
 #!/bin/bash
 
-#=======================================================================================
-#   comm-calamares - install.sh.htm
-#   Este script é o coração da configuração dinâmica do Calamares.
-#   Ele recebe os parâmetros via POST do BigBashView e gera os arquivos
-#   de configuração do Calamares em /etc/calamares/modules/ antes de
-#   iniciar a interface final.
-#=======================================================================================
-
-# Configuração de tradução
+#Translation
 export TEXTDOMAINDIR="/usr/share/locale"
 export TEXTDOMAIN=calamares-biglinux
 
-# Garante que o script não execute prematuramente
+
 touch /tmp/biglinux-wait-install
 
-# Salva o separador de campos padrão e define um novo para lidar com novas linhas
 OIFS=$IFS
 IFS=$'\n'
 
-# Limpa o marcador de início do Calamares
 rm -f /tmp/start_calamares
 
-# --- 1. CONFIGURAÇÃO DO SISTEMA DE ARQUIVOS (btrfs ou ext4) ---
-# Define o tipo de sistema de arquivos padrão para o Calamares
+
 if [ "$option" = "btrfs" ]; then
+#     rm -f /tmp/use_disable_fsync
     cp -f /usr/share/bigbashview/apps/calamares/partition.conf /etc/calamares/modules/partition.conf
     > /tmp/start_calamares
 fi
 
 if [ "$option" = "ext4" ]; then
+#     rm -f /tmp/use_disable_fsync
+    #rm -f /etc/calamares/modules/partition.conf
     cp -f /usr/share/bigbashview/apps/calamares/partition.conf /etc/calamares/modules/partition.conf
     sed -i 's/defaultFileSystemType.*/defaultFileSystemType: "ext4"/' /etc/calamares/modules/partition.conf
     > /tmp/start_calamares
 fi
 
 
-# --- 2. DETECÇÃO DA PASTA DOS ARQUIVOS .SFS (unpackfs) ---
-# Encontra o diretório correto dos arquivos SFS para a instalação base
-sfsFolder=""
+###### Detecting folder with sfs files
+# Try with manjaro folder
 if [[ -e /run/miso/bootmnt/manjaro/x86_64/ ]]; then
   sfsFolder=manjaro
+  
+# Try with folder same as HOSTNAME
 elif [[ -e /run/miso/bootmnt/$HOSTNAME/x86_64/ ]]; then
   sfsFolder="$HOSTNAME"
+  
+# Try folder removing efi and boot folder
 elif [[ -e $(ls -d1 /run/miso/bootmnt/*/ | grep -ve '/efi/' -ve '/boot/') ]]; then
     sfsFolder="$(ls -d1 /run/miso/bootmnt/*/ | grep -ve '/efi/' -ve '/boot/')"
 fi
+######
 
-# Gera a configuração do unpackfs.conf
-# Se for uma instalação customizada sem pacotes adicionais, não inclui o desktopfs.sfs
-if [ "$use_custom_desktop" = "yes" ] && [ -z "$install_packages" ]; then
-    echo "---
+
+if [ "$use_custom_desktop" = "yes" ]; then
+echo "---
 unpack:
     - source: \"/run/miso/bootmnt/$sfsFolder/x86_64/rootfs.sfs\"
       sourcefs: \"squashfs\"
       destination: \"\"" > /etc/calamares/modules/unpackfs.conf
+
 else
-    echo "---
+
+echo "---
 unpack:
     - source: \"/run/miso/bootmnt/$sfsFolder/x86_64/rootfs.sfs\"
       sourcefs: \"squashfs\"
@@ -66,19 +63,12 @@ unpack:
       destination: \"\"" > /etc/calamares/modules/unpackfs.conf
 fi
 
+if [ -e "/etc/calamares/modules/packages.conf" ];then
+    sudo rm /etc/calamares/modules/packages.conf
+fi
 
-# --- 3. CONFIGURAÇÃO DE PACOTES (packages.conf) ---
-# Esta é a seção principal que lida com a instalação e remoção de pacotes.
-
-# Remove qualquer configuração de pacotes anterior
-rm -f /etc/calamares/modules/packages.conf
-rm -f /tmp/listPkgsRemove
-
-# Verifica se alguma operação de pacote (instalar ou remover) é necessária
-if [ "$use_custom_desktop" = "yes" ] || [ "$less_pkgs" = "yes" ]; then
-
-    # Cria o cabeçalho do arquivo packages.conf
-    echo '---
+if [ "$use_custom_desktop" = "yes" ]; then
+echo '---
 
 backend: pacman
 
@@ -92,52 +82,82 @@ pacman:
     needed_only: true
 
 operations:' > /etc/calamares/modules/packages.conf
-
-    # Lógica para INSTALAÇÃO MÍNIMA (remoção de pacotes)
-    if [ "$less_pkgs" = "yes" ]; then
-        # Cria uma lista de pacotes para MANTER
-        echo "$pkg_rm" | sudo tee /tmp/listPkgsNoRemove.txt > /dev/null
-        sudo sed -i 's/;/\n/g' /tmp/listPkgsNoRemove.txt
-
-        # Compara a lista de pacotes disponíveis para remoção com a lista a ser mantida,
-        # gerando a lista final de pacotes a serem REMOVIDOS.
-        grep -Fxv -f "/tmp/listPkgsNoRemove.txt" "/usr/share/bigbashview/apps/calamares/minimal-pkgs.txt" > /tmp/listPkgsRemove
+    if [ "$remove_packages" != "" ]; then
+        echo ' - remove:' >> /etc/calamares/modules/packages.conf
         
-        # Se a lista de remoção não estiver vazia, adiciona a seção 'remove'
-        if [ -s /tmp/listPkgsRemove ]; then
-            echo ' - remove:' >> /etc/calamares/modules/packages.conf
-            
-            # Adiciona cada pacote da lista para remoção
-            while IFS= read -r pkg_to_remove; do
-                pacman -Q "$pkg_to_remove" &> /dev/null
-                if [ "$?" = "0" ]; then
-                    echo "   - $pkg_to_remove" >> /etc/calamares/modules/packages.conf
-                fi
-            done < /tmp/listPkgsRemove
-        fi
+        sed -i '/pacman/s/-Rs/-Rcns/' /lib/calamares/modules/chrootcfg/main.py
+        sed -i '/pacman/s/-Rs/-Rcns/' /lib/calamares/modules/packages/main.py
+        
+        echo $remove_packages | tr -d '\r' > /tmp/packageRemove
+        sed -i 's/[ ]\+/ /g' /tmp/packageRemove
+        sed -i 's/ /\n/g' /tmp/packageRemove
+        
+        for package in $(cat /tmp/packageRemove); do
+            echo "   - $package" >> /etc/calamares/modules/packages.conf
+        done
     fi
-
-    # Lógica para INSTALAÇÃO CUSTOMIZADA (instalação de novos pacotes)
-    if [ "$use_custom_desktop" = "yes" ] && [ -n "$install_packages" ]; then
+    if [ "$install_packages" != "" ]; then
         echo ' - install:' >> /etc/calamares/modules/packages.conf
-        
-        # Adiciona cada pacote da lista de instalação
-        for package in $(echo "$install_packages"); do
+
+        echo  $install_packages | tr -d '\r' > /tmp/packageInstallList
+        sed -i 's/[ ]\+/ /g' /tmp/packageInstallList
+        sed -i 's/ /\n/g' /tmp/packageInstallList
+        for package in $(cat /tmp/packageInstallList); do
             echo "   - $package" >> /etc/calamares/modules/packages.conf
         done
     fi
 fi
 
-# --- 4. CONFIGURAÇÃO PRINCIPAL DO CALAMARES (settings.conf) ---
-# Gera a sequência de execução do instalador.
+# Remove packages
+if [ "$less_pkgs" = "yes" ]; then
+    # Remove old list if exist
+    rm -f /tmp/listPkgsNoRemove.txt
+    # Write list of packages to remove to a file in tmp
+    echo $pkg_rm | sudo tee /tmp/listPkgsNoRemove.txt
+    # Change ; to line break
+    sudo sed -i 's/;/\n/g' /tmp/listPkgsNoRemove.txt
+    # Remove packages that are in the list of packages to keep
+    grep -Fxv -f "/tmp/listPkgsNoRemove.txt" "/tmp/pkgAvaliableToRemove.txt" > /tmp/listPkgsRemove
+    # Checking if the file is not empty
+    if [ -s /tmp/listPkgsRemove ]; then
+        echo '---
 
+backend: pacman
+
+skip_if_no_internet: false
+update_db: false
+update_system: false
+
+pacman:
+num_retries: 0
+disable_download_timeout: false
+needed_only: false
+
+operations:
+ - remove:
+        - --cascade' > /etc/calamares/modules/packages.conf
+        
+        # Checking if the package is installed in the ISO to add the removal
+        for pkg_to_remove  in $(cat /tmp/listPkgsRemove); do
+            pacman -Q $pkg_to_remove &> /dev/null
+            if [ "$?" = "0" ]; then
+                echo "        - $pkg_to_remove" >>  /etc/calamares/modules/packages.conf
+            fi
+        done
+    fi
+fi
+
+
+# General configuration
 echo '---
 modules-search: [ local ]
 
 instances:
+
 - id:       initialize_pacman
   module:   shellprocess
   config:   shellprocess_initialize_pacman.conf
+
 - id:       displaymanager_biglinux
   module:   shellprocess
   config:   shellprocess_displaymanager_biglinux.conf
@@ -160,18 +180,20 @@ sequence:
         - locale
         - keyboard' > /etc/calamares/settings.conf
 
-# Adiciona o módulo 'packages' à sequência de execução se for uma instalação customizada ou mínima
-if [ -s /etc/calamares/modules/packages.conf ]; then
-    echo '        - shellprocess@initialize_pacman
+# Change desktop
+if [ "$use_custom_desktop" = "yes" ]; then
+echo '        - shellprocess@initialize_pacman
         - packages' >> /etc/calamares/settings.conf
+    if [ "$login_manager" != "" ]; then
+        echo '        - shellprocess@displaymanager_biglinux' >> /etc/calamares/settings.conf
+    fi
 fi
 
-# Adiciona a troca de gerenciador de login, se especificado
-if [ "$login_manager" != "" ]; then
-    echo '        - shellprocess@displaymanager_biglinux' >> /etc/calamares/settings.conf
+# Only remove packages
+if [ -s /tmp/listPkgsRemove ]; then
+echo '        - packages' >> /etc/calamares/settings.conf
 fi
 
-# Continuação da sequência de execução padrão
 echo '        - localecfg
         - luksopenswaphookcfg
         - luksbootkeyfile
@@ -201,16 +223,59 @@ disable-cancel: false
 disable-cancel-during-exec: false
 quit-at-end: false' >> /etc/calamares/settings.conf
 
-
-# --- 5. LÓGICA ESPECÍFICA PARA NETINSTALL (XIVASTUDIO) ---
+#add net-install if xivastudio and online
 if [ -n "$(lsb_release -i | grep -i xivastudio)" ];then
+    # update package database and check if there is an internet connection
     windowID="$(xprop -root '\t$0' _NET_ACTIVE_WINDOW | cut -f 2)"
     sleep 600 | zenity --attach="$windowID" --width=300 --progress --title=$"Wait..." --pulsate --no-cancel --auto-close --text $"Checking internet connection..." &
 
-    while [ -n "$(top -b -d1 n1 | grep gpg$)" ]; do sleep 0.5; done
-    
-    sudo pacman -Sy 
+    # wait for gpg to finish
+    while [ -n "$(top -b -d1 n1 | grep gpg$)" ]; do
+        sleep 0.5
+    done
+    sudo pacman -Sy
     if [ "$?" = "0" ];then
+        if [ ! -e "/etc/calamares/modules/packages.conf" ];then
+            echo '---
+
+backend: pacman
+
+skip_if_no_internet: false
+update_db: true
+update_system: true
+
+pacman:
+    num_retries: 10
+    disable_download_timeout: true
+    needed_only: true' > /etc/calamares/modules/packages.conf
+        fi
+        sudo sed -i '/^sequence:/i \- id:       xivastudio\n  module:   netinstall\n  config:   netinstall-xivastudio.conf\n' /etc/calamares/settings.conf
+        sudo sed -i '/- partition/a \        - netinstall@xivastudio' /etc/calamares/settings.conf
+        if ! grep -q '        - packages' /etc/calamares/settings.conf; then
+            sudo sed -i '/- initcpio/a \        - packages' /etc/calamares/settings.conf
+        fi
+        sudo cp -fa /usr/share/bigbashview/apps/calamares/netinstall-xivastudio.conf  /etc/calamares/modules/
+        sudo cp -fa /usr/share/bigbashview/apps/calamares/netinstall-xivastudio.yaml  /etc/calamares/modules/
+        killall zenity
+    else
+        killall zenity
+        zenity --attach="$windowID" --error --width=300 --title=$"Internet" --text $"Without internet connection...\\nExtra packages installation disabled."
+    fi
+fi
+
+# Adiciona a seleção de pacotes da comunidade se for a edição correta e estiver online
+if grep -qi bigcommunity /etc/os-release; then
+    # atualiza o banco de dados de pacotes e verifica se há conexão com a internet
+    windowID="$(xprop -root '\t$0' _NET_ACTIVE_WINDOW | cut -f 2)"
+    sleep 600 | zenity --attach="$windowID" --width=300 --progress --title=$"Wait..." --pulsate --no-cancel --auto-close --text $"Checking internet connection..." &
+
+    # espera o gpg terminar, se estiver em execução
+    while [ -n "$(top -b -d1 n1 | grep gpg$)" ]; do
+        sleep 0.5
+    done
+    sudo pacman -Sy
+    if [ "$?" = "0" ];then
+        # Garante que o arquivo packages.conf existe para que o netinstall possa adicionar pacotes
         if [ ! -e "/etc/calamares/modules/packages.conf" ];then
             echo '---
 backend: pacman
@@ -222,45 +287,57 @@ pacman:
     disable_download_timeout: true
     needed_only: true' > /etc/calamares/modules/packages.conf
         fi
-        sudo sed -i '/shellprocess_displaymanager/{p;s/.*/\n- id:       xivastudio\n  module:   netinstall\n  config:   netinstall-xivastudio.conf/;}' /etc/calamares/settings.conf
-        sudo sed -i "$(sed -n '/partition/{=;q}' /etc/calamares/settings.conf)s/partition/partition\n        - netinstall@xivastudio/" /etc/calamares/settings.conf
-        sudo sed -i '/localecfg/{h;s/.*/        - shellprocess@initialize_pacman\n        - packages/;p;x;}' /etc/calamares/settings.conf
-        sudo cp -fa /usr/share/bigbashview/apps/calamares/netinstall-xivastudio.conf  /etc/calamares/modules/
-        sudo cp -fa /usr/share/bigbashview/apps/calamares/netinstall-xivastudio.yaml  /etc/calamares/modules/
+
+        # Adiciona a instância do módulo netinstall ao settings.conf
+        sudo sed -i '/^instances:/a \- id:       community\n  module:   netinstall\n  config:   netinstall-community.conf\n' /etc/calamares/settings.conf
+
+        # Adiciona a página netinstall à sequência de exibição, logo após a partição
+        sudo sed -i '/- partition/a \        - netinstall@community' /etc/calamares/settings.conf
+
+        # Garante que o módulo de pacotes está na sequência de execução
+        if ! grep -q '        - packages' /etc/calamares/settings.conf; then
+            sudo sed -i '/- initcpio/a \        - packages' /etc/calamares/settings.conf
+        fi
+
+        # Copia os arquivos de configuração do netinstall da comunidade para a pasta de módulos do Calamares
+        sudo cp -fa /usr/share/bigbashview/apps/calamares/netinstall-community.conf  /etc/calamares/modules/
+        sudo cp -fa /usr/share/bigbashview/apps/calamares/netinstall-community.yaml  /etc/calamares/modules/
+
         killall zenity
     else
         killall zenity
-        zenity --attach="$windowID" --error --width=300 --title=$"Internet" --text $"Without internet connection...\nExtra packages installation disabled."
+        zenity --attach="$windowID" --error --width=300 --title=$"Internet" --text $"Without internet connection...\\nExtra packages installation disabled."
     fi
 fi
 
-
-# --- 6. CONFIGURAÇÃO DE SCRIPTS AUXILIARES (shellprocess) ---
-
-# Inicialização das chaves do pacman
+# start keys in pacman
 echo '---
+
 dontChroot: false
+
 script:
  - "pacman-key --init"
  - command: "pacman-key --populate archlinux manjaro biglinux"
    timeout: 1200
+
 i18n:
  name: "Init pacman-key"' > /etc/calamares/modules/shellprocess_initialize_pacman.conf
 
-# Troca do gerenciador de login
+
+# Change display manager
 echo "---
+
 dontChroot: false
+
 script:
  - \"systemctl enable $login_manager\"
+
 i18n:
  name: \"Enable login manager\"" > /etc/calamares/modules/shellprocess_displaymanager_biglinux.conf
 
-# Restaura o separador de campos padrão
 IFS=$OIFS
 
-# --- 7. REDIRECIONAMENTO E INÍCIO DO CALAMARES ---
-# Redireciona para a página de dicas, que então fechará a interface e permitirá que
-# o `calamares-biglinux` execute o binário do Calamares.
+
 echo '
 <body onload=window.location="tips.html">
 '

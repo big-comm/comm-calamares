@@ -1,5 +1,3 @@
-<!-- /usr/share/bigbashview/apps/calamares/index.html -->
-
     <!-- Name of JSON file with translation -->
     <script>const projectName = 'calamares-biglinux';</script> 
     <!-- Include the generic header (CSS and JS) -->
@@ -47,68 +45,50 @@
 <!-- firstPage -->
 <main x-show="activePage === 'firstPage'" class="middle no-padding system-background-color-surface drag-area" x-init="autoAdjustGrid()">
   <div class="grid padding grid-container-auto-adjust center">
-
-    <!-- Card 1: Instalação Padrão -->
-    <div class="medium-elevate no-padding margin background-bgcolor">
-        <div component="card-model-1" x-data='{
-          title: _("Installation"),
-          description: _("The system is in live mode, which has limitations."), 
-          description2: _("Install it for a complete experience."), 
-          textIcon: "save",
-          buttonText: _("Install"), 
-          buttonClass: "tertiary",
-          buttonAction: () => window.location.href = "install.sh.htm?option=btrfs"}'>
-        </div>
+  <div class="medium-elevate no-padding margin background-bgcolor">
+    <div component="card-model-1" x-data='{
+      textIcon: "precision_manufacturing",
+      title: _("Maintenance"), 
+      description: _("Tools that facilitate the maintenance of the installed system."), 
+      buttonText: _("Restore"), 
+      buttonAction: () => activePage = "restorePage"}'>
     </div>
-    
-    <!-- NOVO CARD: Instalação Customizada -->
-    <div class="medium-elevate no-padding margin background-bgcolor">
-        <div component="card-model-1" x-data='{
-          textIcon: "apps",
-          title: _("Custom Install"), 
-          description: _("Choose your desktop environment and extra packages."),
-          buttonText: _("Select"),
-          buttonAction: () => window.location.href = "desktops.html"}'>
-        </div>
+  </div>
+  <div class="medium-elevate no-padding margin background-bgcolor">
+    <div component="card-model-1" x-data='{
+      title: _("Installation"),
+      description: _("The system is in live mode, which has limitations."), 
+      description2: _("Install it for a complete experience."), 
+      textIcon: "save",
+      buttonText: _("Install"), 
+      buttonClass: "tertiary",
+      buttonAction: () => window.location.href = "install.sh.htm?option=btrfs"}'>
     </div>
-
-    <!-- Card 3: Instalação Mínima -->
-    <div class="medium-elevate no-padding margin background-bgcolor">
-      <div component="card-model-1" x-data='{
-        textIcon: "list_alt",
-        title: _("Minimal"), 
-        description: _("Choose which programs to install, ensuring a highly customized experience."),
-        buttonText: _("Continue"),
-        buttonAction: () => window.location.href = "minimal.html"}'>
-      </div>
+  </div>
+  <div class="medium-elevate no-padding margin background-bgcolor">
+    <div component="card-model-1" x-data='{
+      textIcon: "list_alt",
+      title: _("Minimal"), 
+      description: _("Choose which programs to install, ensuring a highly customized experience."),
+      buttonText: _("Continue"),
+      buttonAction: () => window.location.href = "minimal.html"}'>
     </div>
-
-    <!-- Card 4: Manutenção -->
-    <div class="medium-elevate no-padding margin background-bgcolor">
-      <div component="card-model-1" x-data='{
-        textIcon: "precision_manufacturing",
-        title: _("Maintenance"), 
-        description: _("Tools that facilitate the maintenance of the installed system."), 
-        buttonText: _("Restore"), 
-        buttonAction: () => activePage = "restorePage"}'>
-      </div>
     </div>
-    
   </div>
 
   <div class="medium-elevate no-padding large-margin">
   <article class="system-background-color no-padding no-margin">
     <!-- Any component with drag-area class is used to drag and move window -->
      <div class="center-align large-padding" tabindex="0">
-      <span stonejs>The system is in</span> 
+      <span stonejs>The system is in</span>&nbsp;
       <span class="bold">
         <?include bash [ -d /sys/firmware/efi ] && echo ' UEFI' || echo ' BIOS (Legacy)'?>
       </span>
-      <span stonejs>, Linux</span> 
+      <span stonejs>, Linux</span>&nbsp;
       <span class="bold">
         <?include bash uname -r | cut -f1 -d-?>
-      </span> 
-      <span stonejs>and graphical mode</span> 
+      </span>&nbsp;
+      <span stonejs>and graphical mode</span>&nbsp;
       <span class="bold">
         <?include bash echo ${XDG_SESSION_TYPE^}.?>
     </nav>
@@ -148,7 +128,7 @@
       <div component="card-model-1" x-data='{
         textIcon: "history",
         title: _("Snapshot and backups"), 
-        description: _("Restore restore points of the installed system."),
+        description: _("Restore points of the installed system."),
         buttonText: _("Start"),
         buttonAction: () => _run("timeshift-launcher")}'>
       </div>
@@ -161,15 +141,15 @@
       <article class="system-background-color no-padding no-margin">
         <!-- Any component with drag-area class is used to drag and move window -->
         <nav class="padding center-align no-space drag-area">
-          <p stonejs>The system is in</p> 
+          <p stonejs>The system is in</p>&nbsp;
           <p class="bold">
             <?include bash [ -d /sys/firmware/efi ] && echo ' UEFI' || echo ' BIOS (Legacy)'?>
           </p>
-          <p stonejs>, Linux</p> 
+          <p stonejs>, Linux</p>&nbsp;
           <p class="bold">
             <?include bash uname -r | cut -f1 -d-?>
-          </p> 
-          <p stonejs>and graphical mode</p> 
+          </p>&nbsp;
+          <p stonejs>and graphical mode</p>&nbsp;
           <p class="bold">
             <?include bash echo ${XDG_SESSION_TYPE^}.?>
           </p>
