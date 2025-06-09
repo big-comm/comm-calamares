@@ -64,7 +64,7 @@
     - flatpak
     - gvfs
     - wlogout
-    #- pinta
+    - pinta
     - grimblast-git
     - bibata-cursor-theme
     - pacseek
