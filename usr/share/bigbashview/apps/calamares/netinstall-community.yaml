@@ -1,92 +1,94 @@
 - name: "Seleção do Ambiente de Instalação"
-  description: "Escolha o ambiente a ser instalado. Apenas uma opção pode ser selecionada."
-  mutually_exclusive: true
-  groups:
-      - name: "Hyprland (Recomendado)"
-        description: "Um compositor Wayland moderno e dinâmico com animações fluidas e alta personalização."
-        selected: true # Esta será a opção padrão
-        packages:
-            - hyprland
-            - waybar
-            - wofi
-            - kitty
-            - thunar
-            - swaybg
-            - mako
-            - xdg-desktop-portal-hyprland
-            - polkit-kde-agent
-            - grim
-            - slurp
-            - noto-fonts-emoji
+  description: "Escolha o ambiente principal a ser instalado. Apenas uma opção pode ser selecionada."
+  expanded: true       # Garante que as opções sejam visíveis por padrão
+  mutually_exclusive: true # Transforma as opções em botões de rádio
+  packages:
+    - name: "hyprland"
+      description: "Um compositor Wayland moderno com animações fluidas."
+      selected: true # Opção padrão
+      # Pacotes adicionais para Hyprland são listados aqui
+      subpackages:
+        - name: waybar
+        - name: wofi
+        - name: kitty
+        - name: thunar
+        - name: swaybg
+        - name: mako
+        - name: xdg-desktop-portal-hyprland
+        - name: polkit-kde-agent
+        - name: grim
+        - name: slurp
+        - name: noto-fonts-emoji
 
-      - name: "i3 WM (Tradicional)"
-        description: "Um gerenciador de janelas Tiling clássico, leve e eficiente para X11."
-        selected: false
-        packages:
-            - i3-wm
-            - i3status
-            - i3lock
-            - rofi
-            - nitrogen
-            - picom
-            - thunar
-            - lxappearance
+    - name: "i3"
+      description: "Um gerenciador de janelas Tiling clássico e eficiente para X11."
+      selected: false
+      # Pacotes adicionais para i3
+      subpackages:
+        - name: i3-wm
+        - name: i3status
+        - name: i3lock
+        - name: rofi
+        - name: nitrogen
+        - name: picom
+        - name: thunar
+        - name: lxappearance
 
-      - name: "Instalação Mínima (Apenas terminal)"
-        description: "Instala um sistema base sem ambiente gráfico. Ideal para servidores ou usuários avançados."
-        selected: false
-        packages:
-          # BASE
-          - base
-          - linux-lts # O nome real do pacote do kernel, substitua se necessário (ex: linux, linux-zen)
-          # SISTEMAS DE ARQUIVOS
-          - btrfs-progs
-          - dosfstools
-          - e2fsprogs
-          - exfatprogs
-          - f2fs-tools
-          - jfsutils
-          - mdadm
-          - xfsprogs
-          # BOOTLOADER E INICIALIZAÇÃO
-          - amd-ucode
-          - grub
-          - grub-theme-community
-          - install-grub
-          - intel-ucode
-          - os-prober
-          - update-grub
-          # FERRAMENTAS DO SISTEMA
-          - bash-completion
-          - dhcpcd
-          - sudo
-          # SSH SERVER
-          - openssh
-          # APPS BIGLINUX
-          - biglinux-nano-config
-          - biglinux-systemd-swap
-          # KEYRING
-          - biglinux-keyring
-          - chili-keyring
-          - community-keyring
-          # APLICATIVOS DA COMUNIDADE
-          - bigcommunity-name
-          - comm-minimal-config
-          # UTILITÁRIOS ESSENCIAIS
-          - curl
-          - dialog
-          - duf
-          - faster-mkinitcpio
-          - grc-rs
-          - htop
-          - mkinitcpio
-          - rsync
-          - shfmt
-          - wget
+    - name: "minimal"
+      description: "Instala um sistema base sem ambiente gráfico (apenas linha de comando)."
+      selected: false
+      # Pacotes para a instalação mínima
+      subpackages:
+        # BASE
+        - name: base
+        - name: linux-lts # IMPORTANTE: Verifique e use o nome correto do pacote do kernel
+        # SISTEMAS DE ARQUIVOS
+        - name: btrfs-progs
+        - name: dosfstools
+        - name: e2fsprogs
+        - name: exfatprogs
+        - name: f2fs-tools
+        - name: jfsutils
+        - name: mdadm
+        - name: xfsprogs
+        # BOOTLOADER E INICIALIZAÇÃO
+        - name: amd-ucode
+        - name: grub
+        - name: grub-theme-community
+        - name: install-grub
+        - name: intel-ucode
+        - name: os-prober
+        - name: update-grub
+        # FERRAMENTAS DO SISTEMA
+        - name: bash-completion
+        - name: dhcpcd
+        - name: sudo
+        # SSH SERVER
+        - name: openssh
+        # APPS BIGLINUX
+        - name: biglinux-nano-config
+        - name: biglinux-systemd-swap
+        # KEYRING
+        - name: biglinux-keyring
+        - name: chili-keyring
+        - name: community-keyring
+        # APLICATIVOS DA COMUNIDADE
+        - name: bigcommunity-name
+        - name: comm-minimal-config
+        # UTILITÁRIOS ESSENCIAIS
+        - name: curl
+        - name: dialog
+        - name: duf
+        - name: faster-mkinitcpio
+        - name: grc-rs
+        - name: htop
+        - name: mkinitcpio
+        - name: rsync
+        - name: shfmt
+        - name: wget
 
 # As seções a seguir são para pacotes de software adicionais.
 # O usuário pode selecionar qualquer combinação usando caixas de seleção.
-# Estes pacotes serão adicionados À SELEÇÃO DE AMBIENTE feita acima.
 - name: "Imagem"
   description: "Editores de imagem, visualizadores e ferramentas de design gráfico."
   critical: false
