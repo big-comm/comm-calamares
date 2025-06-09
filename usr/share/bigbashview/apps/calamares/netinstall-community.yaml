@@ -5,7 +5,7 @@
   expanded: false
   critical: true
   packages:
-    - comm-hyprland-config
+    #- comm-hyprland-config
     - base-devel
     - hyprland
     - ml4w-hyprland
@@ -45,7 +45,6 @@
     - neovim
     - htop
     - python-pywal
-    - pinta
     - blueman
     - grim
     - slurp
@@ -65,7 +64,7 @@
     - flatpak
     - gvfs
     - wlogout
-    - pinta
+    #- pinta
     - grimblast-git
     - bibata-cursor-theme
     - pacseek
