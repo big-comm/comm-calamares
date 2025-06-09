@@ -5,15 +5,22 @@
   expanded: false
   critical: true
   packages:
+    - hyprland
+    - kvantum
+    - qt5ct
+    - sddm
+    - swaybg
+    - waybar
+
+    #- hyprland
     #- comm-hyprland-config
-     - base-devel
-     - hyprland
-     - ml4w-hyprland
-     - nwg-dock-hyprland
-     - waybar
-     - hyprshade
-     - waypaper
-     - swaync
+    # - base-devel
+   #  - ml4w-hyprland
+   #  - nwg-dock-hyprland
+   #  - waybar
+   #  - hyprshade
+   #  - waypaper
+   #  - swaync
     # - auto-tweaks-browser
     # #- comm-base-config
     # - evince
