@@ -137,12 +137,15 @@ instances:
   module:   shellprocess
   config:   shellprocess_displaymanager_biglinux.conf
 
+# Instâncias de módulos netinstall/packagechooser serão injetadas aqui
+
 sequence:
     - show:
         - welcome
         - locale
         - keyboard
         - partition
+        # Páginas de seleção de pacotes (show) serão injetadas aqui
         - users
         - summary
     - exec:
@@ -156,6 +159,7 @@ sequence:
         - keyboard
         - localecfg
         - shellprocess@initialize_pacman
+        # O módulo 'packages' (exec) será injetado aqui se necessário
         - luksopenswaphookcfg
         - luksbootkeyfile
         - initcpiocfg
@@ -231,7 +235,9 @@ operations:
 fi
 
 # Adiciona a seleção de pacotes da comunidade se for a edição correta e estiver online
-if grep -qi bigcommunity /etc/os-release; then
+#if grep -qi bigcommunity /etc/os-release; then
+if true; then 
+#if grep -qi bigcommunity /etc/os-release; then
     windowID="$(xprop -root '\t$0' _NET_ACTIVE_WINDOW | cut -f 2)"
     sleep 600 | zenity --attach="$windowID" --width=300 --progress --title=$"Wait..." --pulsate --no-cancel --auto-close --text $"Checking internet connection..." &
     while pgrep -x gpg > /dev/null; do sleep 0.5; done
@@ -270,15 +276,15 @@ operations:
             }' /etc/calamares/settings.conf
         fi
         # Garante que o módulo de pacotes está na sequência 'exec'
-        if ! grep -q '        - packages' /etc/calamares/settings.conf; then
-            sudo sed -i '/- shellprocess@initialize_pacman/a \        - packages' /etc/calamares/settings.conf
+        # MODIFICAÇÃO: Usar packages@community_packages em vez de packages
+        if ! grep -q '        - packages@community_packages' /etc/calamares/settings.conf; then
+            sudo sed -i '/- shellprocess@initialize_pacman/a \        - packages@community_packages' /etc/calamares/settings.conf
         fi
     else
         killall zenity
         zenity --attach="$windowID" --error --width=300 --title=$"Internet" --text $"Without internet connection...\\nExtra packages installation disabled."
     fi
 fi
-
 # Configura a inicialização das chaves do pacman
 echo '---
 dontChroot: false
