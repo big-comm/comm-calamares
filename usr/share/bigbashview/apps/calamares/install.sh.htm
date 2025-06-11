@@ -272,13 +272,13 @@ operations:
             }' /etc/calamares/settings.conf
         fi
         if ! grep -q '        - netinstall$' /etc/calamares/settings.conf; then
-            sudo sed -i '/- show:/,/- exec:/ { /- packagechooser$/a \        - netinstall
+            sudo sed -i '/- show:/,/- exec:/ { /- packagechooser@community_chooser$/a \        - netinstall
             }' /etc/calamares/settings.conf
         fi
         # Garante que o módulo de pacotes está na sequência 'exec'
-        # MODIFICAÇÃO: Usar packages@community_packages em vez de packages
-        if ! grep -q '        - packages@community_packages' /etc/calamares/settings.conf; then
-            sudo sed -i '/- shellprocess@initialize_pacman/a \        - packages@community_packages' /etc/calamares/settings.conf
+        # MODIFICAÇÃO: Usar packages em vez de packages
+        if ! grep -q '        - packages' /etc/calamares/settings.conf; then
+            sudo sed -i '/- shellprocess@initialize_pacman/a \        - packages' /etc/calamares/settings.conf
         fi
     else
         killall zenity
