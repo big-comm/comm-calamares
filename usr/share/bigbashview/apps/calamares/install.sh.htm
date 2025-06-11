@@ -7,7 +7,7 @@ export TEXTDOMAIN=calamares-biglinux
 # Arquivo de controle para o Calamares
 touch /tmp/biglinux-wait-install
 
-# Salva e redefine o IFS para lidar com novas linhas corretamente
+# Salva o separador de campo padrão e define um novo para lidar com novas linhas
 OIFS=$IFS
 IFS=$'\n'
 
@@ -26,20 +26,25 @@ if [ "$option" = "ext4" ]; then
     > /tmp/start_calamares
 fi
 
-###### Detecta a pasta com os arquivos .sfs
+###### Detecta a pasta com os arquivos .sfs (lógica aprimorada)
 sfsFolder=""
+# Tenta com a pasta padrão do Manjaro
 if [[ -e /run/miso/bootmnt/manjaro/x86_64/ ]]; then
   sfsFolder="manjaro"
+# Tenta com uma pasta com o mesmo nome do HOSTNAME
 elif [[ -e /run/miso/bootmnt/$HOSTNAME/x86_64/ ]]; then
   sfsFolder="$HOSTNAME"
+# Tenta com a primeira pasta que não seja 'efi' ou 'boot'
 elif [[ -e $(ls -d1 /run/miso/bootmnt/*/ | grep -ve '/efi/' -ve '/boot/') ]]; then
     sfsFolderFullPath="$(ls -d1 /run/miso/bootmnt/*/ | grep -ve '/efi/' -ve '/boot/' | head -n1)"
+    # Remove a barra final do nome da pasta, se houver
     sfsFolderFullPath="${sfsFolderFullPath%/}"
+    # Extrai apenas o nome base da pasta
     sfsFolder="${sfsFolderFullPath##*/}"
 fi
 ######
 
-# Gera o arquivo unpackfs.conf (Sua lógica original mantida)
+# Gera o arquivo unpackfs.conf (lógica original mantida)
 if [ "$use_custom_desktop" = "yes" ]; then
 echo "---
 unpack:
@@ -57,7 +62,7 @@ unpack:
       destination: \"\"" > /etc/calamares/modules/unpackfs.conf
 fi
 
-# Limpa e gera o packages.conf conforme a necessidade (Sua lógica original mantida)
+# Limpa e gera o packages.conf conforme a necessidade (lógica original mantida)
 rm -f /etc/calamares/modules/packages.conf
 
 if [ "$use_custom_desktop" = "yes" ]; then
@@ -116,9 +121,9 @@ operations:' > /etc/calamares/modules/packages.conf
 fi
 
 # ==============================================================================
-# GERAÇÃO DO SETTINGS.CONF (VERSÃO CORRIGIDA)
+# GERAÇÃO DO SETTINGS.CONF CORRIGIDO
 # ==============================================================================
-# Cria um template base com a sequência correta.
+# Cria o template base com a sequência correta
 cat > /etc/calamares/settings.conf <<'EOF'
 ---
 modules-search: [ local ]
@@ -131,6 +136,8 @@ instances:
 - id:       displaymanager_biglinux
   module:   shellprocess
   config:   shellprocess_displaymanager_biglinux.conf
+
+# Instâncias de módulos netinstall/packagechooser serão injetadas aqui
 
 sequence:
     - show:
@@ -177,25 +184,36 @@ disable-cancel-during-exec: false
 quit-at-end: false
 EOF
 
-# Injeta o módulo 'packages' na seção exec SE ele for necessário
-if [ -s /etc/calamares/modules/packages.conf ]; then
+# Injeta o módulo 'packages' na seção exec SE ele existir e for necessário
+if [ -e /etc/calamares/modules/packages.conf ]; then
     if ! grep -q '        - packages' /etc/calamares/settings.conf; then
         sudo sed -i '/- shellprocess@initialize_pacman/a \        - packages' /etc/calamares/settings.conf
     fi
 fi
 
-# Injeta o gerenciador de display personalizado, se necessário
+# Injeta o gerenciador de display se necessário
 if [ "$use_custom_desktop" = "yes" ] && [ "$login_manager" != "" ]; then
-    if ! grep -q 'shellprocess@displaymanager_biglinux' /etc/calamares/settings.conf; then
+    if ! grep -q '        - shellprocess@displaymanager_biglinux' /etc/calamares/settings.conf; then
+        # Inserir depois do módulo displaymanager padrão para sobrescrever
         sudo sed -i '/- displaymanager/a \        - shellprocess@displaymanager_biglinux' /etc/calamares/settings.conf
     fi
 fi
 
-# Lógica para XivaStudio (mantida como no seu original)
+
+# Lógica para XivaStudio
 if [ -n "$(lsb_release -i | grep -i xivastudio)" ];then
-    # ... (código de verificação de internet) ...
+    windowID="$(xprop -root '\t$0' _NET_ACTIVE_WINDOW | cut -f 2)"
+    sleep 600 | zenity --attach="$windowID" --width=300 --progress --title=$"Wait..." --pulsate --no-cancel --auto-close --text $"Checking internet connection..." &
+    while pgrep -x gpg > /dev/null; do sleep 0.5; done
+    
     if sudo pacman -Sy >/dev/null 2>&1; then
-        # ... (cria packages.conf se não existir) ...
+        killall zenity
+        if [ ! -e "/etc/calamares/modules/packages.conf" ];then
+            echo '---
+backend: pacman
+operations:
+ - install: []' > /etc/calamares/modules/packages.conf
+        fi
         sudo cp -fa /usr/share/bigbashview/apps/calamares/netinstall-xivastudio.conf  /etc/calamares/modules/
         sudo cp -fa /usr/share/bigbashview/apps/calamares/netinstall-xivastudio.yaml  /etc/calamares/modules/
 
@@ -208,11 +226,13 @@ if [ -n "$(lsb_release -i | grep -i xivastudio)" ];then
         if ! grep -q '        - packages' /etc/calamares/settings.conf; then
             sudo sed -i '/- shellprocess@initialize_pacman/a \        - packages' /etc/calamares/settings.conf
         fi
-        # ...
+    else
+        killall zenity
+        zenity --attach="$windowID" --error --width=300 --title=$"Internet" --text $"Without internet connection...\\nExtra packages installation disabled."
     fi
 fi
 
-# Lógica para BigCommunity (CORRIGIDA)
+# Adiciona a seleção de pacotes da comunidade se for a edição correta e estiver online
 if grep -qi bigcommunity /etc/os-release; then
     windowID="$(xprop -root '\t$0' _NET_ACTIVE_WINDOW | cut -f 2)"
     sleep 600 | zenity --attach="$windowID" --width=300 --progress --title=$"Wait..." --pulsate --no-cancel --auto-close --text $"Checking internet connection..." &
@@ -221,8 +241,7 @@ if grep -qi bigcommunity /etc/os-release; then
     if sudo pacman -Sy >/dev/null 2>&1; then
         killall zenity
 
-        # Garante que o arquivo packages.conf existe
-        if [ ! -e "/etc/calamares/modules/packages.conf" ]; then
+        if [ ! -e "/etc/calamares/modules/packages.conf" ];then
             echo '---
 backend: pacman
 operations:
@@ -234,7 +253,7 @@ operations:
         sudo cp -fa /usr/share/bigbashview/apps/calamares/netinstall-community.yaml  /etc/calamares/modules/
         sudo cp -fa /usr/share/bigbashview/apps/calamares/packagechooser-community.conf  /etc/calamares/modules/
 
-        # Registra as INSTÂNCIAS, se ainda não existirem
+        # Registra as INSTÂNCIAS no settings.conf, se ainda não existirem
         if ! grep -q 'id:       community_chooser' /etc/calamares/settings.conf; then
             sudo sed -i '/^instances:/a \- id:       community_chooser\n  module:   packagechooser\n  config:   packagechooser-community.conf\n' /etc/calamares/settings.conf
         fi
@@ -242,12 +261,17 @@ operations:
             sudo sed -i '/^instances:/a \- id:       community_packages\n  module:   netinstall\n  config:   netinstall-community.conf\n' /etc/calamares/settings.conf
         fi
 
-        # Adiciona as PÁGINAS à sequência 'show'
+        # Adiciona as PÁGINAS à sequência 'show', na ordem correta
+        # CORREÇÃO: Usar padrões mais específicos que existem apenas na seção show
         if ! grep -q 'packagechooser@community_chooser' /etc/calamares/settings.conf; then
-            sudo sed -i '/- partition/a \        - packagechooser@community_chooser' /etc/calamares/settings.conf
+            # Procura por "- partition" que vem ANTES de "- users" (só existe na seção show)
+            sudo sed -i '/- show:/,/- exec:/ { /- partition$/a \        - packagechooser@community_chooser
+            }' /etc/calamares/settings.conf
         fi
         if ! grep -q 'netinstall@community_packages' /etc/calamares/settings.conf; then
-            sudo sed -i '/- packagechooser@community_chooser/a \        - netinstall@community_packages' /etc/calamares/settings.conf
+            # Adiciona após packagechooser@community_chooser na seção show
+            sudo sed -i '/- show:/,/- exec:/ { /- packagechooser@community_chooser$/a \        - netinstall@community_packages
+            }' /etc/calamares/settings.conf
         fi
 
         # Garante que o módulo de pacotes está na sequência 'exec'
@@ -260,7 +284,7 @@ operations:
     fi
 fi
 
-# Configura a inicialização das chaves do pacman (Sua lógica original mantida)
+# Configura a inicialização das chaves do pacman
 echo '---
 dontChroot: false
 script:
@@ -270,7 +294,7 @@ script:
 i18n:
  name: "Init pacman-key"' > /etc/calamares/modules/shellprocess_initialize_pacman.conf
 
-# Configura a troca do gerenciador de display (Sua lógica original mantida)
+# Configura a troca do gerenciador de display (se aplicável)
 echo "---
 dontChroot: false
 script:
@@ -281,7 +305,7 @@ i18n:
 # Restaura o separador de campo padrão
 IFS=$OIFS
 
-# Redireciona para a página de dicas
+# Redireciona para a página de dicas antes de iniciar o Calamares
 echo '
 <body onload=window.location="tips.html">
 '
