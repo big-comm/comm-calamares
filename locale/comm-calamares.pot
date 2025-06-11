@@ -37,6 +37,32 @@ msgid   "Without internet connection...\\nExtra packages installation "
 msgstr  ""
 
 #
+msgid   "Checking the file:"
+msgstr  ""
+
+#
+msgid   "Checking for download or USB drive errors, this may take a few "
+        "minutes..."
+msgstr  ""
+
+#
+msgid   "Checking system integrity"
+msgstr  ""
+
+#
+msgid   "Error found, please download the system again or use another USB "
+        "drive."
+msgstr  ""
+
+#
+msgid   "The files are intact."
+msgstr  ""
+
+#
+msgid   "Verification canceled."
+msgstr  ""
+
+#
 msgid   "Please wait..."
 msgstr  ""
 
@@ -149,29 +175,44 @@ msgid   "\\nDo you want to view or send the installation log file to the "
 msgstr  ""
 
 #
-msgid   "Checking the file:"
+msgid   "Uncheck the programs you want to remove"
 msgstr  ""
 
 #
-msgid   "Checking for download or USB drive errors, this may take a few "
-        "minutes..."
+msgid   "Back"
 msgstr  ""
 
 #
-msgid   "Checking system integrity"
+msgid   "Uncheck All"
 msgstr  ""
 
 #
-msgid   "Error found, please download the system again or use another USB "
-        "drive."
+msgid   "Check All"
 msgstr  ""
 
 #
-msgid   "The files are intact."
+msgid   "The system is in"
 msgstr  ""
 
 #
-msgid   "Verification canceled."
+msgid   ", Linux"
+msgstr  ""
+
+#
+msgid   "and graphical mode"
+msgstr  ""
+
+#
+msgid   "Manage EFI entries on the motherboard (NVRAM):"
+msgstr  ""
+
+#
+msgid   "EFI Entry Manager"
+msgstr  ""
+
+#
+msgid   "This is a collaborative system, if you need help consult our forum: "
+        "https://forum.biglinux.com.br."
 msgstr  ""
 
 #
@@ -209,45 +250,4 @@ msgstr  ""
 
 #
 msgid   "SWAP partitions will not be used."
-msgstr  ""
-
-#
-msgid   "The system is in"
-msgstr  ""
-
-#
-msgid   ", Linux"
-msgstr  ""
-
-#
-msgid   "and graphical mode"
-msgstr  ""
-
-#
-msgid   "Manage EFI entries on the motherboard (NVRAM):"
-msgstr  ""
-
-#
-msgid   "EFI Entry Manager"
-msgstr  ""
-
-#
-msgid   "This is a collaborative system, if you need help consult our forum: "
-        "https://forum.biglinux.com.br."
-msgstr  ""
-
-#
-msgid   "Back"
-msgstr  ""
-
-#
-msgid   "Uncheck the programs you want to remove"
-msgstr  ""
-
-#
-msgid   "Uncheck All"
-msgstr  ""
-
-#
-msgid   "Check All"
 msgstr  ""

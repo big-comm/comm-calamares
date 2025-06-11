@@ -37,6 +37,33 @@ msgid "Without internet connection...\\nExtra packages installation disabled."
 msgstr "Without internet connection...\\nExtra packages installation disabled."
 
 #
+msgid "Checking the file:"
+msgstr "Checking the file:"
+
+#
+msgid ""
+"Checking for download or USB drive errors, this may take a few minutes..."
+msgstr ""
+"Checking for download or USB drive errors, this may take a few minutes..."
+
+#
+msgid "Checking system integrity"
+msgstr "Checking system integrity"
+
+#
+msgid "Error found, please download the system again or use another USB drive."
+msgstr ""
+"Error found, please download the system again or use another USB drive."
+
+#
+msgid "The files are intact."
+msgstr "The files are intact."
+
+#
+msgid "Verification canceled."
+msgstr "Verification canceled."
+
+#
 msgid "Please wait..."
 msgstr "Please wait..."
 
@@ -179,31 +206,48 @@ msgstr ""
 "\\nGenerate a link to send in support groups.\\n"
 
 #
-msgid "Checking the file:"
-msgstr "Checking the file:"
+msgid "Uncheck the programs you want to remove"
+msgstr "Uncheck the programs you want to remove"
+
+#
+msgid "Back"
+msgstr "Back"
+
+#
+msgid "Uncheck All"
+msgstr "Uncheck All"
+
+#
+msgid "Check All"
+msgstr "Check All"
+
+#
+msgid "The system is in"
+msgstr "The system is in"
+
+#
+msgid ", Linux"
+msgstr ", Linux"
+
+#
+msgid "and graphical mode"
+msgstr "and graphical mode"
+
+#
+msgid "Manage EFI entries on the motherboard (NVRAM):"
+msgstr "Manage EFI entries on the motherboard (NVRAM):"
+
+#
+msgid "EFI Entry Manager"
+msgstr "EFI Entry Manager"
 
 #
 msgid ""
-"Checking for download or USB drive errors, this may take a few minutes..."
+"This is a collaborative system, if you need help consult our forum: https://"
+"forum.biglinux.com.br."
 msgstr ""
-"Checking for download or USB drive errors, this may take a few minutes..."
-
-#
-msgid "Checking system integrity"
-msgstr "Checking system integrity"
-
-#
-msgid "Error found, please download the system again or use another USB drive."
-msgstr ""
-"Error found, please download the system again or use another USB drive."
-
-#
-msgid "The files are intact."
-msgstr "The files are intact."
-
-#
-msgid "Verification canceled."
-msgstr "Verification canceled."
+"This is a collaborative system, if you need help consult our forum: https://"
+"forum.biglinux.com.br."
 
 #
 msgid "Important tips for manual partitioning"
@@ -244,47 +288,3 @@ msgstr ""
 #
 msgid "SWAP partitions will not be used."
 msgstr "SWAP partitions will not be used."
-
-#
-msgid "The system is in"
-msgstr "The system is in"
-
-#
-msgid ", Linux"
-msgstr ", Linux"
-
-#
-msgid "and graphical mode"
-msgstr "and graphical mode"
-
-#
-msgid "Manage EFI entries on the motherboard (NVRAM):"
-msgstr "Manage EFI entries on the motherboard (NVRAM):"
-
-#
-msgid "EFI Entry Manager"
-msgstr "EFI Entry Manager"
-
-#
-msgid ""
-"This is a collaborative system, if you need help consult our forum: https://"
-"forum.biglinux.com.br."
-msgstr ""
-"This is a collaborative system, if you need help consult our forum: https://"
-"forum.biglinux.com.br."
-
-#
-msgid "Back"
-msgstr "Back"
-
-#
-msgid "Uncheck the programs you want to remove"
-msgstr "Uncheck the programs you want to remove"
-
-#
-msgid "Uncheck All"
-msgstr "Uncheck All"
-
-#
-msgid "Check All"
-msgstr "Check All"
