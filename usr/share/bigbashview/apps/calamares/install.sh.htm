@@ -137,12 +137,15 @@ instances:
   module:   shellprocess
   config:   shellprocess_displaymanager_biglinux.conf
 
+# Instâncias de módulos netinstall/packagechooser serão injetadas aqui
+
 sequence:
     - show:
         - welcome
         - locale
         - keyboard
         - partition
+        # Páginas de seleção de pacotes (show) serão injetadas aqui
         - users
         - summary
     - exec:
@@ -156,6 +159,7 @@ sequence:
         - keyboard
         - localecfg
         - shellprocess@initialize_pacman
+        # O módulo 'packages' (exec) será injetado aqui se necessário
         - luksopenswaphookcfg
         - luksbootkeyfile
         - initcpiocfg
@@ -231,53 +235,110 @@ operations:
 fi
 
 # Adiciona a seleção de pacotes da comunidade se for a edição correta e estiver online
+#if grep -qi bigcommunity /etc/os-release; then
 if grep -qi bigcommunity /etc/os-release; then
+#if true; then
     windowID="$(xprop -root '\t$0' _NET_ACTIVE_WINDOW | cut -f 2)"
     sleep 600 | zenity --attach="$windowID" --width=300 --progress --title=$"Wait..." --pulsate --no-cancel --auto-close --text $"Checking internet connection..." &
+    # Espera o gpg terminar, se estiver em execução
     while pgrep -x gpg > /dev/null; do sleep 0.5; done
 
+    # Tenta sincronizar os pacotes para verificar a conexão
     if sudo pacman -Sy >/dev/null 2>&1; then
         killall zenity
 
-        if [ ! -e "/etc/calamares/modules/packages.conf" ];then
-            echo '---
-backend: pacman
-operations:
- - install: []' > /etc/calamares/modules/packages.conf
-        fi
+        # PASSO 1: Copia os arquivos de configuração necessários
+        # Calamares usará estes arquivos com base nas configurações abaixo
+        sudo cp -fa /usr/share/bigbashview/apps/calamares/welcome_online-community.conf /etc/calamares/modules/welcome_online.conf
+        sudo cp -fa /usr/share/bigbashview/apps/calamares/packagechooser-community.conf  /etc/calamares/modules/packagechooser.conf
+        sudo cp -fa /usr/share/bigbashview/apps/calamares/netinstall-community.conf /etc/calamares/modules/netinstall.conf
+        sudo cp -fa /usr/share/bigbashview/apps/calamares/packages_online-community.conf /etc/calamares/modules/packages_online.conf
+        
+        # Garante que o netinstall.yaml exista
+        sudo cp -fa /usr/share/bigbashview/apps/calamares/netinstall-community.yaml /etc/calamares/modules/netinstall.yaml
 
-        # Copia os arquivos de configuração necessários
-        sudo cp -fa /usr/share/bigbashview/apps/calamares/netinstall-community.conf  /etc/calamares/modules/
-        sudo cp -fa /usr/share/bigbashview/apps/calamares/netinstall-community.yaml  /etc/calamares/modules/
-        sudo cp -fa /usr/share/bigbashview/apps/calamares/packagechooser-community.conf  /etc/calamares/modules/
 
-        # Registra as INSTÂNCIAS no settings.conf, se ainda não existirem
-        if ! grep -q 'id:       community_chooser' /etc/calamares/settings.conf; then
-            sudo sed -i '/^instances:/a \- id:       community_chooser\n  module:   packagechooser\n  config:   packagechooser-community.conf\n' /etc/calamares/settings.conf
-        fi
-        if ! grep -q 'id:       community_packages' /etc/calamares/settings.conf; then
-            sudo sed -i '/^instances:/a \- id:       community_packages\n  module:   netinstall\n  config:   netinstall-community.conf\n' /etc/calamares/settings.conf
-        fi
+        # PASSO 2: Gera o settings.conf COMPLETO e CORRETO para o modo online/community
+        cat > /etc/calamares/settings.conf <<'EOF'
+---
+modules-search: [ local ]
 
-        # Adiciona as PÁGINAS à sequência 'show', na ordem correta
-        # CORREÇÃO: Usar padrões mais específicos que existem apenas na seção show
-        if ! grep -q '        - packagechooser$' /etc/calamares/settings.conf; then
-            sudo sed -i '/- show:/,/- exec:/ { /- partition$/a \        - packagechooser
-            }' /etc/calamares/settings.conf
-        fi
-        if ! grep -q '        - netinstall$' /etc/calamares/settings.conf; then
-            sudo sed -i '/- show:/,/- exec:/ { /- packagechooser$/a \        - netinstall
-            }' /etc/calamares/settings.conf
-        fi
-        # Garante que o módulo de pacotes está na sequência 'exec'
-        if ! grep -q '        - packages' /etc/calamares/settings.conf; then
-            sudo sed -i '/- shellprocess@initialize_pacman/a \        - packages' /etc/calamares/settings.conf
-        fi
+instances:
+- id:       online
+  module:   welcome
+  config:   welcome_online.conf
+
+- id:       online
+  module:   packages
+  config:   packages_online.conf
+
+- id:       initialize_pacman
+  module:   shellprocess
+  config:   shellprocess_initialize_pacman.conf
+
+- id:       displaymanager_biglinux
+  module:   shellprocess
+  config:   shellprocess_displaymanager_biglinux.conf
+
+sequence:
+    - show:
+        - welcome@online
+        - locale
+        - keyboard
+        - partition
+        - packagechooser
+        - netinstall
+        - users
+        - summary
+    - exec:
+        - partition
+        - mount
+        - unpackfs
+        - networkcfg
+        - machineid
+        - fstab
+        - locale
+        - keyboard
+        - localecfg
+        - shellprocess@initialize_pacman
+        - packages@online
+        - luksopenswaphookcfg
+        - luksbootkeyfile
+        - initcpiocfg
+        - initcpio
+        - users
+        - displaymanager
+        - mhwdcfg
+        - hwclock
+        - services
+        - grubcfg
+        - grubcfg-fix
+        - bootloader
+        - postcfg
+        - btrfs-fix
+        - umount
+    - show:
+        - finished
+        
+branding: biglinux
+prompt-install: true
+dont-chroot: false
+oem-setup: false
+disable-cancel: false
+disable-cancel-during-exec: false
+quit-at-end: false
+EOF
+
     else
+        # Se não houver internet, exibe o erro e usa o settings.conf padrão (gerado no início do script)
         killall zenity
         zenity --attach="$windowID" --error --width=300 --title=$"Internet" --text $"Without internet connection...\\nExtra packages installation disabled."
     fi
 fi
+
+# ==============================================================================
+# CONFIGURAÇÕES FINAIS (EXECUTADAS EM TODOS OS CASOS)
+# ==============================================================================
 
 # Configura a inicialização das chaves do pacman
 echo '---
