@@ -345,7 +345,7 @@ echo '---
 dontChroot: false
 script:
  - "pacman-key --init"
- - command: "pacman-key --populate archlinux manjaro biglinux"
+ - command: "pacman-key --populate archlinux manjaro biglinux community"
    timeout: 1200
 i18n:
  name: "Init pacman-key"' > /etc/calamares/modules/shellprocess_initialize_pacman.conf
