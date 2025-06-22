@@ -32,11 +32,6 @@ msgid   "Without internet connection...\\\\nExtra packages installation "
 msgstr  ""
 
 #
-msgid   "Without internet connection...\\nExtra packages installation "
-        "disabled."
-msgstr  ""
-
-#
 msgid   "Checking the file:"
 msgstr  ""
 

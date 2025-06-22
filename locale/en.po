@@ -33,10 +33,6 @@ msgstr ""
 "Without internet connection...\\\\nExtra packages installation disabled."
 
 #
-msgid "Without internet connection...\\nExtra packages installation disabled."
-msgstr "Without internet connection...\\nExtra packages installation disabled."
-
-#
 msgid "Checking the file:"
 msgstr "Checking the file:"
 
