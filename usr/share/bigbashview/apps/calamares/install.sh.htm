@@ -1,20 +1,20 @@
 #!/bin/bash
 
-# Prepara o ambiente de tradução
+# Prepare the translation environment
 export TEXTDOMAINDIR="/usr/share/locale"
 export TEXTDOMAIN=calamares-biglinux
 
-# Arquivo de controle para o Calamares
+# Control file for Calamares
 touch /tmp/biglinux-wait-install
 
-# Salva o separador de campo padrão e define um novo para lidar com novas linhas
+# Save the default field separator and set a new one to handle new lines
 OIFS=$IFS
 IFS=$'\n'
 
-# Garante que não há um início de Calamares pendente
+# Ensures there is no pending Calamares start
 rm -f /tmp/start_calamares
 
-# Configura o tipo de sistema de arquivos baseado na opção do usuário
+# Set the file system type based on user choice
 if [ "$option" = "btrfs" ]; then
     cp -f /usr/share/bigbashview/apps/calamares/partition.conf /etc/calamares/modules/partition.conf
     > /tmp/start_calamares
@@ -26,25 +26,25 @@ if [ "$option" = "ext4" ]; then
     > /tmp/start_calamares
 fi
 
-###### Detecta a pasta com os arquivos .sfs (lógica aprimorada)
+###### Detect folder with .sfs files (improved logic)
 sfsFolder=""
-# Tenta com a pasta padrão do Manjaro
+# Try with the default Manjaro folder
 if [[ -e /run/miso/bootmnt/manjaro/x86_64/ ]]; then
   sfsFolder="manjaro"
-# Tenta com uma pasta com o mesmo nome do HOSTNAME
+# Try with a folder with the same name as the HOSTNAME
 elif [[ -e /run/miso/bootmnt/$HOSTNAME/x86_64/ ]]; then
   sfsFolder="$HOSTNAME"
-# Tenta com a primeira pasta que não seja 'efi' ou 'boot'
+# Try with the first folder that is not 'efi' or 'boot'
 elif [[ -e $(ls -d1 /run/miso/bootmnt/*/ | grep -ve '/efi/' -ve '/boot/') ]]; then
     sfsFolderFullPath="$(ls -d1 /run/miso/bootmnt/*/ | grep -ve '/efi/' -ve '/boot/' | head -n1)"
-    # Remove a barra final do nome da pasta, se houver
+    # Remove trailing slash from folder name if present
     sfsFolderFullPath="${sfsFolderFullPath%/}"
-    # Extrai apenas o nome base da pasta
+    # Extract only the base name of the folder
     sfsFolder="${sfsFolderFullPath##*/}"
 fi
 ######
 
-# Gera o arquivo unpackfs.conf (lógica original mantida)
+# Generate the unpackfs.conf file
 if [ "$use_custom_desktop" = "yes" ]; then
 echo "---
 unpack:
@@ -62,7 +62,7 @@ unpack:
       destination: \"\"" > /etc/calamares/modules/unpackfs.conf
 fi
 
-# Limpa e gera o packages.conf conforme a necessidade (lógica original mantida)
+# Clean and generate packages.conf as needed (original logic kept)
 rm -f /etc/calamares/modules/packages.conf
 
 if [ "$use_custom_desktop" = "yes" ]; then
@@ -121,9 +121,9 @@ operations:' > /etc/calamares/modules/packages.conf
 fi
 
 # ==============================================================================
-# GERAÇÃO DO SETTINGS.CONF CORRIGIDO
+# SETTINGS.CONF GENERATION FIXED
 # ==============================================================================
-# Cria o template base com a sequência correta
+# Create the base template with the correct sequence
 cat > /etc/calamares/settings.conf <<'EOF'
 ---
 modules-search: [ local ]
@@ -137,7 +137,7 @@ instances:
   module:   shellprocess
   config:   shellprocess_displaymanager_biglinux.conf
 
-# Instâncias de módulos netinstall/packagechooser serão injetadas aqui
+# Instances of netinstall/packagechooser modules will be injected here
 
 sequence:
     - show:
@@ -145,7 +145,7 @@ sequence:
         - locale
         - keyboard
         - partition
-        # Páginas de seleção de pacotes (show) serão injetadas aqui
+        # Package selection pages (show) will be injected here
         - users
         - summary
     - exec:
@@ -159,7 +159,7 @@ sequence:
         - keyboard
         - localecfg
         - shellprocess@initialize_pacman
-        # O módulo 'packages' (exec) será injetado aqui se necessário
+        # The 'packages' module (exec) will be injected here if necessary
         - luksopenswaphookcfg
         - luksbootkeyfile
         - initcpiocfg
@@ -186,14 +186,14 @@ disable-cancel-during-exec: false
 quit-at-end: false
 EOF
 
-# Injeta o módulo 'packages' na seção exec SE ele existir e for necessário
+# Inject the 'packages' module into the exec section IF it exists and is needed
 if [ -e /etc/calamares/modules/packages.conf ]; then
     if ! grep -q '        - packages' /etc/calamares/settings.conf; then
         sudo sed -i '/- shellprocess@initialize_pacman/a \        - packages' /etc/calamares/settings.conf
     fi
 fi
 
-# Injeta o gerenciador de display se necessário
+# Inject the display manager if needed
 if [ "$use_custom_desktop" = "yes" ] && [ "$login_manager" != "" ]; then
     if ! grep -q '        - shellprocess@displaymanager_biglinux' /etc/calamares/settings.conf; then
         # Inserir depois do módulo displaymanager padrão para sobrescrever
@@ -202,7 +202,7 @@ if [ "$use_custom_desktop" = "yes" ] && [ "$login_manager" != "" ]; then
 fi
 
 
-# Lógica para XivaStudio
+# Logic for XivaStudio
 if [ -n "$(lsb_release -i | grep -i xivastudio)" ];then
     windowID="$(xprop -root '\t$0' _NET_ACTIVE_WINDOW | cut -f 2)"
     sleep 600 | zenity --attach="$windowID" --width=300 --progress --title=$"Wait..." --pulsate --no-cancel --auto-close --text $"Checking internet connection..." &
@@ -234,31 +234,27 @@ operations:
     fi
 fi
 
-# Adiciona a seleção de pacotes da comunidade se for a edição correta e estiver online
-#if grep -qi bigcommunity /etc/os-release; then
+# Adds community package selection if it is the correct edition and online
+
 if grep -qi bigcommunity /etc/os-release; then
-#if true; then
     windowID="$(xprop -root '\t$0' _NET_ACTIVE_WINDOW | cut -f 2)"
     sleep 600 | zenity --attach="$windowID" --width=300 --progress --title=$"Wait..." --pulsate --no-cancel --auto-close --text $"Checking internet connection..." &
     # Espera o gpg terminar, se estiver em execução
     while pgrep -x gpg > /dev/null; do sleep 0.5; done
 
-    # Tenta sincronizar os pacotes para verificar a conexão
+    # Try to synchronize the packets to verify the connection
     if sudo pacman -Sy >/dev/null 2>&1; then
         killall zenity
 
-        # PASSO 1: Copia os arquivos de configuração necessários
-        # Calamares usará estes arquivos com base nas configurações abaixo
         sudo cp -fa /usr/share/bigbashview/apps/calamares/welcome_online-community.conf /etc/calamares/modules/welcome_online.conf
         sudo cp -fa /usr/share/bigbashview/apps/calamares/packagechooser-community.conf  /etc/calamares/modules/packagechooser.conf
         sudo cp -fa /usr/share/bigbashview/apps/calamares/netinstall-community.conf /etc/calamares/modules/netinstall.conf
         sudo cp -fa /usr/share/bigbashview/apps/calamares/packages_online-community.conf /etc/calamares/modules/packages_online.conf
-        
-        # Garante que o netinstall.yaml exista
         sudo cp -fa /usr/share/bigbashview/apps/calamares/netinstall-community.yaml /etc/calamares/modules/netinstall.yaml
+        sudo cp -fa /usr/share/bigbashview/apps/calamares/images /etc/calamares/
 
 
-        # PASSO 2: Gera o settings.conf COMPLETO e CORRETO para o modo online/community
+        # Generates the COMPLETE and CORRECT settings.conf for online/community mode
         cat > /etc/calamares/settings.conf <<'EOF'
 ---
 modules-search: [ local ]
@@ -330,17 +326,17 @@ quit-at-end: false
 EOF
 
     else
-        # Se não houver internet, exibe o erro e usa o settings.conf padrão (gerado no início do script)
+        # If there is no internet, display the error and use the default settings.conf (generated at the beginning of the script)
         killall zenity
         zenity --attach="$windowID" --error --width=300 --title=$"Internet" --text $"Without internet connection...\\nExtra packages installation disabled."
     fi
 fi
 
 # ==============================================================================
-# CONFIGURAÇÕES FINAIS (EXECUTADAS EM TODOS OS CASOS)
+# FINAL SETTINGS (EXECUTED IN ALL CASES)
 # ==============================================================================
 
-# Configura a inicialização das chaves do pacman
+# Configures pacman key initialization
 echo '---
 dontChroot: false
 script:
@@ -350,7 +346,7 @@ script:
 i18n:
  name: "Init pacman-key"' > /etc/calamares/modules/shellprocess_initialize_pacman.conf
 
-# Configura a troca do gerenciador de display (se aplicável)
+# Configures display manager switching (if applicable)
 echo "---
 dontChroot: false
 script:
@@ -358,10 +354,10 @@ script:
 i18n:
  name: \"Enable login manager\"" > /etc/calamares/modules/shellprocess_displaymanager_biglinux.conf
 
-# Restaura o separador de campo padrão
+# Restores the default field separator
 IFS=$OIFS
 
-# Redireciona para a página de dicas antes de iniciar o Calamares
+# Redirects to the tips page before starting Calamares
 echo '
 <body onload=window.location="tips.html">
 '
